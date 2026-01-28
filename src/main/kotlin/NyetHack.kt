@@ -3,7 +3,10 @@ fun main() {
         // Prints the message in yellow
         "\u001b[33;1m$message\u001b[0m"
     }
-    val heroName = readLine() ?: ""
+    val heroName = readLine()
+    require(heroName != null && heroName.isNotEmpty()) {
+        "The hero must have a name."
+    }
 
     changeNarratorMood()
     narrate("$heroName heads to the town square")
