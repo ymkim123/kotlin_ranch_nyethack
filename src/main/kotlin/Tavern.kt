@@ -12,4 +12,11 @@ fun visitTavern() {
         "$TAVERN_MASTER says: Eli isn't here"
     }
     println(eliMessage)
+
+    val othersMessage = if (patrons.containsAll(listOf("Sophie", "Mordoc"))) {
+        "$TAVERN_MASTER says: Sophie and Mordoc are seated by the stew kettle"
+    } else {
+        "$TAVERN_MASTER says: Sophie and Mordoc  aren't with each other right right now"
+    }
+    println(othersMessage)
 }
