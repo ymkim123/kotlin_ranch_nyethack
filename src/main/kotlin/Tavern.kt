@@ -27,5 +27,6 @@ fun visitTavern() {
     println(patrons)
     narrate("Alex (VIP) enters the tavern")
     patrons.add(0, "Alex")
+    patrons[0] = "Alexis"
     println(patrons)
 }
