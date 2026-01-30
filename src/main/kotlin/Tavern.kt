@@ -30,6 +30,9 @@ fun visitTavern() {
     }
 
     println(patronGold)
+    println(patronGold["Madrigal"])
+    println(patronGold["Taernyl"])
+    println(patronGold["Eli"])
 
     narrate("$heroName sees several patrons in the tavern:")
     narrate(patrons.joinToString())
