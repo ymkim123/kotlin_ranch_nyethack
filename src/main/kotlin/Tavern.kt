@@ -42,6 +42,9 @@ fun visitTavern() {
     narrate("$heroName sees several patrons in the tavern:")
     narrate(patrons.joinToString())
 
+    val favoriteItems = patrons.map { getFavoriteMenuItems(it)}
+    println("Favorite items: $favoriteItems")
+
     repeat(3) {
         placeOrder(patrons.random(), menuItems.random(), patronGold)
     }
