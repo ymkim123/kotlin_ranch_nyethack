@@ -42,7 +42,7 @@ fun visitTavern() {
     narrate("$heroName sees several patrons in the tavern:")
     narrate(patrons.joinToString())
 
-    val favoriteItems = patrons.map { getFavoriteMenuItems(it)}
+    val favoriteItems = patrons.flatMap { getFavoriteMenuItems(it)}
     println("Favorite items: $favoriteItems")
 
     repeat(3) {
