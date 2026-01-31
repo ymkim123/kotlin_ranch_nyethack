@@ -10,8 +10,8 @@ private val menuData = File("data/tavern-menu-data.txt")
     .readText()
     .split("\n")
 
-private val menuItems = List(menuData.size) { index ->
-    val (_, name, _) = menuData[index].split(",")
+private val menuItems: List<String> = menuData.map { menuEntry: String ->
+    val (_, name, _) = menuEntry.split(",")
     name
 }
 
@@ -44,11 +44,10 @@ fun visitTavern() {
     narrate("$heroName sees several patrons in the tavern:")
     narrate(patrons.joinToString())
 
-    println(patronGold)
     repeat(3) {
         placeOrder(patrons.random(), menuItems.random(), patronGold)
     }
-    println(patronGold)
+    displayPatronBalances(patronGold)
 }
 
 private fun placeOrder(
@@ -71,5 +70,12 @@ private fun placeOrder(
         patronGold[TAVERN_MASTER] = patronGold.getValue(TAVERN_MASTER) + itemPrice
     } else {
         narrate("$TAVERN_MASTER says \"You need more coin for a $menuItemName\"")
+    }
+}
+
+private fun displayPatronBalances(patronGold: Map<String, Double>) {
+    narrate("$heroName intuitively knows how much money each patron has")
+    patronGold.forEach { (patron, balance) ->
+        narrate("$patron has ${"%.2f".format(balance)} gold")
     }
 }
