@@ -49,6 +49,16 @@ fun visitTavern() {
         placeOrder(patrons.random(), menuItems.random(), patronGold)
     }
     displayPatronBalances(patronGold)
+
+    val departingPatrons: List<String> = patrons.filter { patron ->
+        patronGold.getOrDefault(patron, 0.0) < 4.0
+    }
+    departingPatrons.forEach { patron ->
+        narrate("$heroName sees $patron departing the tavern")
+    }
+
+    narrate("There are still some patrons in the tavern")
+    narrate(patrons.joinToString())
 }
 
 private fun getFavoriteMenuItems(patron: String): List<String> {
