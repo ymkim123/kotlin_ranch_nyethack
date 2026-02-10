@@ -1,7 +1,7 @@
 class Player {
     var name = "madrigal"
         get() = field.replaceFirstChar { it.uppercase() }
-        set(value) {
+        private set(value) {
             field = value.trim()
         }
 
