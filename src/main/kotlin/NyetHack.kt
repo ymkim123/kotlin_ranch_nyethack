@@ -1,4 +1,5 @@
 var heroName: String = ""
+val player = Player()
 
 fun main() {
     heroName = promptHeroName()
