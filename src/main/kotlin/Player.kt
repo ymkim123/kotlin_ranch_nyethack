@@ -1,5 +1,5 @@
 class Player {
-    val name = "madrigal"
+    var name = "madrigal"
         get() = field.replaceFirstChar { it.uppercase() }
         set(value) {
             field = value.trim()
