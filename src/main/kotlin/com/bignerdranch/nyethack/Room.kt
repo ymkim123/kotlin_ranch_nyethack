@@ -1,6 +1,6 @@
 package com.bignerdranch.nyethack
 
-class Room(val name: String) {
+open class Room(val name: String) {
 
     fun description() = name
     fun enterRoom() {
