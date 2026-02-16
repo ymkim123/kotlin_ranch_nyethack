@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 import java.io.File
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -41,7 +43,7 @@ fun visitTavern() {
     narrate("${player.name} sees several patrons in the tavern:")
     narrate(patrons.joinToString())
 
-    val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it)}.random()
+    val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
     narrate("The item of the day is the $itemOfDay")
 
     repeat(3) {

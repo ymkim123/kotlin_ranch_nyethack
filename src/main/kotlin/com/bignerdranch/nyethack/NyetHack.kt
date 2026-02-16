@@ -1,10 +1,12 @@
+package com.bignerdranch.nyethack
+
 var heroName: String = ""
 val player = Player()
 
 fun main() {
     narrate("${player.name} is ${player.title}")
     player.changeName("Aurellia")
-    // changeNarratorMood()
+    // com.bignerdranch.nyethack.changeNarratorMood()
     narrate("${player.name}, ${player.title}, heads to the town square")
     visitTavern()
     player.castFireball()
