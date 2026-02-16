@@ -2,7 +2,7 @@ package com.bignerdranch.nyethack
 
 class Player(
     initialName: String,
-    val hometown: String,
+    val hometown: String = "Neversummer",
     var healthPoints: Int,
     val isImmortal: Boolean
 ) {
@@ -20,9 +20,8 @@ class Player(
             else -> "The Renowned Hero"
         }
 
-    constructor(name: String, hometown: String): this(
+    constructor(name: String): this(
         initialName = name,
-        hometown = hometown,
         healthPoints = 100,
         isImmortal = false
     ) {
