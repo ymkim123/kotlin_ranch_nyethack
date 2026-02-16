@@ -20,6 +20,13 @@ class Player(
             else -> "The Renowned Hero"
         }
 
+    constructor(name: String, hometown: String): this(
+        initialName = name,
+        hometown = hometown,
+        healthPoints = 100,
+        isImmortal = false
+    )
+
     fun castFireball(numFireballs:Int = 2) {
         narrate("A glass of Fireball springs into existence (x$numFireballs)")
     }
