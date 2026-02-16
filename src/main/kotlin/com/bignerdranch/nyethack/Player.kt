@@ -25,7 +25,11 @@ class Player(
         hometown = hometown,
         healthPoints = 100,
         isImmortal = false
-    )
+    ) {
+        if (name.equals("Jason", ignoreCase = true)) {
+            healthPoints = 500
+        }
+    }
 
     fun castFireball(numFireballs:Int = 2) {
         narrate("A glass of Fireball springs into existence (x$numFireballs)")
