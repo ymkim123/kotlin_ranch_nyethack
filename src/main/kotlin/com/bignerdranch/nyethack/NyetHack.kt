@@ -4,7 +4,7 @@ var heroName: String = ""
 lateinit var player: Player
 
 fun main() {
-    narrate("Welcome to NyetHack!")
+    narrate("Welcome to NyetHack, ${player.name}!")
     val playerName = promptHeroName()
     player = Player(playerName)
     // changeNarratorMood()
