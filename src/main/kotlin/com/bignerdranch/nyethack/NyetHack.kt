@@ -1,9 +1,12 @@
 package com.bignerdranch.nyethack
 
 var heroName: String = ""
-val player = Player("Jason")
+lateinit var player: Player
 
 fun main() {
+    narrate("Welcome to NyetHack!")
+    val playerName = promptHeroName()
+    player = Player(playerName)
     // changeNarratorMood()
     val mortality = if (player.isImmortal) "an immortal" else "a mortal"
     narrate("${player.name} of ${player.hometown}, ${player.title}, heads to the town square")
