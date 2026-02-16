@@ -1,7 +1,7 @@
 package com.bignerdranch.nyethack
 
 var heroName: String = ""
-val player = Player("Jason", "Jacksonville")
+val player = Player("Jason")
 
 fun main() {
     // changeNarratorMood()
