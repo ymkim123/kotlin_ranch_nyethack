@@ -43,7 +43,7 @@ object Game {
             currentRoom.enterRoom()
 
             print("> Enter your command: ")
-            println("Last command: ${readLine()}")
+            GameInput(readLine()).processCommand()
         }
     }
 
