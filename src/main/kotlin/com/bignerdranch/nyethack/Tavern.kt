@@ -36,18 +36,18 @@ class Tavern : Room(TAVERN_NAME) {
         *patrons.map { it to 6.00 }.toTypedArray()
     )
 
+    val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
+
     override val status = "Busy"
 
     override fun enterRoom() {
         narrate("${player.name} enters $TAVERN_NAME")
         narrate("There are several items for sale:")
         narrate(menuItems.joinToString())
+        narrate("The item of the day is the $itemOfDay")
 
         narrate("${player.name} sees several patrons in the tavern:")
         narrate(patrons.joinToString())
-
-        val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
-        narrate("The item of the day is the $itemOfDay")
 
         repeat(3) {
             placeOrder(patrons.random(), menuItems.random())
