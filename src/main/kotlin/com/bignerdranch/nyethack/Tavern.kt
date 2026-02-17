@@ -29,6 +29,42 @@ class Tavern : Room(TAVERN_NAME) {
     override  val status = "Busy"
 
     override fun enterRoom() {
+        narrate("${player.name} enters $TAVERN_NAME")
+        narrate("There are several items for sale:")
+        narrate(menuItems.joinToString())
+
+        val patrons: MutableSet<String> = firstNames.shuffled()
+            .zip(lastNames.shuffled()) { firstName, lastName -> "$firstName $lastName" }
+            .toMutableSet()
+
+        val patronGold = mutableMapOf(
+            TAVERN_MASTER to 86.00,
+            player.name to 4.50,
+            *patrons.map { it to 6.00 }.toTypedArray()
+        )
+
+        narrate("${player.name} sees several patrons in the tavern:")
+        narrate(patrons.joinToString())
+
+        val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
+        narrate("The item of the day is the $itemOfDay")
+
+        repeat(3) {
+            placeOrder(patrons.random(), menuItems.random(), patronGold)
+        }
+        displayPatronBalances(patronGold)
+
+        patrons.filter { patron -> patronGold.getOrDefault(patron, 0.0) < 4.0 }
+            .also { departingPatrons ->
+                patrons -= departingPatrons
+                patronGold -= departingPatrons
+            }
+            .forEach { patron ->
+                narrate("${player.name} sees $patron departing the tavern")
+            }
+
+        narrate("There are still some patrons in the tavern")
+        narrate(patrons.joinToString())
     }
 }
 
