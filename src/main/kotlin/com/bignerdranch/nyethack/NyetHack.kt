@@ -51,5 +51,9 @@ object Game {
         private val input = arg ?: ""
         val command = input.split(" ")[0]
         val argument = input.split(" ").getOrElse(1) { "" }
+
+        fun processCommand() = when (command.lowercase()) {
+            else -> narrate("I'm not sure what you're trying to do")
+        }
     }
 }
