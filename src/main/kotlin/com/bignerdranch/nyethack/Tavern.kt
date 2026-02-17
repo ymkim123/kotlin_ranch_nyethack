@@ -25,6 +25,13 @@ private val menuItemTypes = menuData.associate { (type, name, _) ->
     name to type
 }
 
+class Tavern : Room(TAVERN_NAME) {
+    override  val status = "Busy"
+
+    override fun enterRoom() {
+    }
+}
+
 fun visitTavern() {
     narrate("${player.name} enters $TAVERN_NAME")
     narrate("There are several items for sale:")
