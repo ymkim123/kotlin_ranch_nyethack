@@ -49,22 +49,7 @@ class Tavern : Room(TAVERN_NAME) {
         narrate("${player.name} sees several patrons in the tavern:")
         narrate(patrons.joinToString())
 
-        repeat(3) {
-            placeOrder(patrons.random(), menuItems.random())
-        }
-        displayPatronBalances(patronGold)
-
-        patrons.filter { patron -> patronGold.getOrDefault(patron, 0.0) < 4.0 }
-            .also { departingPatrons ->
-                patrons -= departingPatrons
-                patronGold -= departingPatrons
-            }
-            .forEach { patron ->
-                narrate("${player.name} sees $patron departing the tavern")
-            }
-
-        narrate("There are still some patrons in the tavern")
-        narrate(patrons.joinToString())
+        placeOrder(patrons.random(), menuItems.random())
     }
 
     private fun placeOrder(
@@ -96,12 +81,5 @@ private fun getFavoriteMenuItems(patron: String): List<String> {
             menuItemTypes[menuItem]?.contains("dessert") == true
         }
         else -> menuItems.shuffled().take(Random.nextInt(1..2))
-    }
-}
-
-private fun displayPatronBalances(patronGold: Map<String, Double>) {
-    narrate("${player.name} intuitively knows how much money each patron has")
-    patronGold.forEach { (patron, balance) ->
-        narrate("$patron has ${"%.2f".format(balance)} gold")
     }
 }
