@@ -35,3 +35,7 @@ private fun promptHeroName(): String {
     println("Madrigal")
     return "Madrigal"
 }
+
+object Game {
+
+}
