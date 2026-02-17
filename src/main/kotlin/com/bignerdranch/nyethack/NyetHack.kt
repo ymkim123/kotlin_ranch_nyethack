@@ -8,13 +8,6 @@ fun main() {
     val playerName = promptHeroName()
     player = Player(playerName)
     // changeNarratorMood()
-    player.prophesize()
-
-    val mortality = if (player.isImmortal) "an immortal" else "a mortal"
-    narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
-
-    player.castFireball()
-    player.prophesize()
 
     Game.play()
 }
@@ -40,6 +33,8 @@ object Game {
 
     init {
         narrate("Welcome, adventurer")
+        val mortality = if (player.isImmortal) "an immortal" else "a mortal"
+        narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
     }
 
     fun play() {
