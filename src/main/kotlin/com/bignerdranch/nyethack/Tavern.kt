@@ -26,22 +26,22 @@ private val menuItemTypes = menuData.associate { (type, name, _) ->
 }
 
 class Tavern : Room(TAVERN_NAME) {
-    override  val status = "Busy"
+    val patrons: MutableSet<String> = firstNames.shuffled()
+        .zip(lastNames.shuffled()) { firstName, lastName -> "$firstName $lastName" }
+        .toMutableSet()
+
+    val patronGold = mutableMapOf(
+        TAVERN_MASTER to 86.00,
+        player.name to 4.50,
+        *patrons.map { it to 6.00 }.toTypedArray()
+    )
+
+    override val status = "Busy"
 
     override fun enterRoom() {
         narrate("${player.name} enters $TAVERN_NAME")
         narrate("There are several items for sale:")
         narrate(menuItems.joinToString())
-
-        val patrons: MutableSet<String> = firstNames.shuffled()
-            .zip(lastNames.shuffled()) { firstName, lastName -> "$firstName $lastName" }
-            .toMutableSet()
-
-        val patronGold = mutableMapOf(
-            TAVERN_MASTER to 86.00,
-            player.name to 4.50,
-            *patrons.map { it to 6.00 }.toTypedArray()
-        )
 
         narrate("${player.name} sees several patrons in the tavern:")
         narrate(patrons.joinToString())
@@ -50,7 +50,7 @@ class Tavern : Room(TAVERN_NAME) {
         narrate("The item of the day is the $itemOfDay")
 
         repeat(3) {
-            placeOrder(patrons.random(), menuItems.random(), patronGold)
+            placeOrder(patrons.random(), menuItems.random())
         }
         displayPatronBalances(patronGold)
 
@@ -69,8 +69,7 @@ class Tavern : Room(TAVERN_NAME) {
 
     private fun placeOrder(
         patronName: String,
-        menuItemName: String,
-        patronGold: MutableMap<String, Double>
+        menuItemName: String
     ) {
         val itemPrice = menuItemPrices.getValue(menuItemName)
 
