@@ -37,5 +37,7 @@ private fun promptHeroName(): String {
 }
 
 object Game {
-
+    init {
+        narrate("Welcome, adventurer")
+    }
 }
