@@ -10,11 +10,8 @@ fun main() {
     // changeNarratorMood()
     player.prophesize()
 
-    var currentRoom: Room = Tavern()
     val mortality = if (player.isImmortal) "an immortal" else "a mortal"
-    narrate("${player.name} of ${player.hometown}, ${player.title}, is in ${currentRoom.description()}")
     narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
-    currentRoom.enterRoom()
 
     player.castFireball()
     player.prophesize()
@@ -39,13 +36,16 @@ private fun promptHeroName(): String {
 }
 
 object Game {
+    private var currentRoom: Room = TownSquare()
+
     init {
         narrate("Welcome, adventurer")
     }
 
     fun play() {
         while (true) {
-            // Play NyetHack
+            narrate("${player.name} of ${player.hometown}, ${player.title}, is in ${currentRoom.description()}")
+            currentRoom.enterRoom()
         }
     }
 }
