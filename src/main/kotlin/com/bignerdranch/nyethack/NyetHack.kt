@@ -41,6 +41,9 @@ object Game {
         while (true) {
             narrate("${player.name} of ${player.hometown}, ${player.title}, is in ${currentRoom.description()}")
             currentRoom.enterRoom()
+
+            print("> Enter your command: ")
+            println("Last command: ${readLine()}")
         }
     }
 }
