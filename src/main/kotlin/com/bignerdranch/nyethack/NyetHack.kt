@@ -18,6 +18,8 @@ fun main() {
 
     player.castFireball()
     player.prophesize()
+
+    Game.play()
 }
 
 private fun promptHeroName(): String {
@@ -39,5 +41,11 @@ private fun promptHeroName(): String {
 object Game {
     init {
         narrate("Welcome, adventurer")
+    }
+
+    fun play() {
+        while (true) {
+            // Play NyetHack
+        }
     }
 }
