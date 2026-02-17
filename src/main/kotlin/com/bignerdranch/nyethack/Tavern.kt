@@ -66,6 +66,29 @@ class Tavern : Room(TAVERN_NAME) {
         narrate("There are still some patrons in the tavern")
         narrate(patrons.joinToString())
     }
+
+    private fun placeOrder(
+        patronName: String,
+        menuItemName: String,
+        patronGold: MutableMap<String, Double>
+    ) {
+        val itemPrice = menuItemPrices.getValue(menuItemName)
+
+        narrate("$patronName speaks with $TAVERN_MASTER to place an order")
+        if (itemPrice <= patronGold.getOrDefault(patronName, 0.0)) {
+            val action = when (menuItemTypes[menuItemName]) {
+                "shandy", "elixir" -> "pours"
+                "meal" -> "serves"
+                else -> "hands"
+            }
+            narrate("$TAVERN_MASTER $action $patronName a $menuItemName")
+            narrate("$patronName pays $TAVERN_MASTER $itemPrice gold")
+            patronGold[patronName] = patronGold.getValue(patronName) - itemPrice
+            patronGold[TAVERN_MASTER] = patronGold.getValue(TAVERN_MASTER) + itemPrice
+        } else {
+            narrate("$TAVERN_MASTER says \"You need more coin for a $menuItemName\"")
+        }
+    }
 }
 
 fun visitTavern() {
