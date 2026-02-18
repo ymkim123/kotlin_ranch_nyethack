@@ -12,9 +12,5 @@ enum class Direction(
     South(Coordinate(0, 1)),
     West(Coordinate(-1, 0));
 
-    fun updateCoordinate(coordinate: Coordinate) =
-        Coordinate(
-            x = coordinate.x + directionCoordinate.x,
-            y = coordinate.y + directionCoordinate.y
-        )
+    fun updateCoordinate(coordinate: Coordinate) = coordinate + directionCoordinate
 }
