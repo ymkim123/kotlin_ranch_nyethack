@@ -54,6 +54,19 @@ object Game {
         }
     }
 
+    fun move(direction: Direction) {
+        val newPosition = direction.updateCoordinate(currentPosition)
+        val newRoom = worldMap.getOrNull(newPosition.y)?.getOrNull(newPosition.x)
+
+        if (newRoom != null) {
+            narrate("The hero moves ${direction.name}")
+            currentPosition = newPosition
+            currentRoom = newRoom
+        } else {
+            narrate("You cannot move ${direction.name}")
+        }
+    }
+
     private class GameInput(arg: String?) {
         private val input = arg ?: ""
         val command = input.split(" ")[0]
