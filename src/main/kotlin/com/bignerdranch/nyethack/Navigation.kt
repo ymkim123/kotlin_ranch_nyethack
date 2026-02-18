@@ -1,6 +1,8 @@
 package com.bignerdranch.nyethack
 
-data class Coordinate(val x: Int, val y: Int)
+data class Coordinate(val x: Int, val y: Int) {
+    operator fun plus(other: Coordinate) = Coordinate(x + other.x, y + other.y)
+}
 
 enum class Direction(
     private val directionCoordinate: Coordinate
