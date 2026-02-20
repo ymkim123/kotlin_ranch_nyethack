@@ -34,6 +34,12 @@ class Player(
         ).random()
     }
 
+    override val diceCount: Int
+        get() = TODO("Not yet implemented")
+
+    override val diceSides: Int
+        get() = TODO("Not yet implemented")
+
     init {
         require(healthPoints > 0) { "healthPoints must be greater than zero" }
         require(name.isNotBlank()) { "Player must have a name" }
@@ -61,5 +67,9 @@ class Player(
     fun prophesize() {
         narrate("$name thinks about their future")
         narrate("A fortune teller told Madrigal, \"$prophecy\"")
+    }
+
+    override fun takeDamage(damage: Int) {
+        TODO("Not yet implemented")
     }
 }
