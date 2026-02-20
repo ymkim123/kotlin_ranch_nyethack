@@ -34,11 +34,9 @@ class Player(
         ).random()
     }
 
-    override val diceCount: Int
-        get() = TODO("Not yet implemented")
+    override val diceCount = 3
 
-    override val diceSides: Int
-        get() = TODO("Not yet implemented")
+    override val diceSides = 4
 
     init {
         require(healthPoints > 0) { "healthPoints must be greater than zero" }
@@ -70,6 +68,8 @@ class Player(
     }
 
     override fun takeDamage(damage: Int) {
-        TODO("Not yet implemented")
+        if (!isImmortal) {
+            healthPoints -= damage
+        }
     }
 }
