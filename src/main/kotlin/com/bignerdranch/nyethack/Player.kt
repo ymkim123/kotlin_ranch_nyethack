@@ -3,10 +3,11 @@ package com.bignerdranch.nyethack
 class Player(
     initialName: String,
     val hometown: String = "Neversummer",
-    var healthPoints: Int,
+    override var healthPoints: Int,
     val isImmortal: Boolean
-) {
-    var name = initialName
+) : Fightable {
+
+    override var name = initialName
         get() = field.replaceFirstChar { it.uppercase() }
         private set(value) {
             field = value.trim()
