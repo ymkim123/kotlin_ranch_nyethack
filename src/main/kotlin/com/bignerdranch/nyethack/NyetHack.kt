@@ -100,6 +100,7 @@ object Game {
         val argument = input.split(" ").getOrElse(1) { "" }
 
         fun processCommand() = when (command.lowercase()) {
+            "fight" -> fight()
             "move" -> {
                 val direction = Direction.values()
                     .firstOrNull { it.name.equals(argument, ignoreCase = true) }
