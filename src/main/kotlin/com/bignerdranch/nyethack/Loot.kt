@@ -1,6 +1,6 @@
 package com.bignerdranch.nyethack
 
-class LootBox<T>(var contents: T) {
+class LootBox<T : Loot>(var contents: T) {
     var isOpen = false
         private set
 
