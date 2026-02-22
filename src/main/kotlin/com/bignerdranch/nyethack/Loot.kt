@@ -10,7 +10,7 @@ class LootBox<out T : Loot>(val contents: T) {
     }
 }
 
-class DropOffBox<T> where T : Loot, T : Sellable {
+class DropOffBox<in T> where T : Loot, T : Sellable {
     fun sellLoot(sellableLoot: T): Int {
         return (sellableLoot.value * 0.7).toInt()
     }
