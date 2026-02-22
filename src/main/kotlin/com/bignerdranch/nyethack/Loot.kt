@@ -24,10 +24,17 @@ interface Sellable {
     val value: Int
 }
 
+abstract class Hat : Loot(), Sellable
+
 class Fedora(
     override val name: String,
     override val value: Int
-) : Loot(), Sellable
+) : Hat()
+
+class Fez(
+    override val name: String,
+    override val value: Int
+) : Hat()
 
 class Gemstones(
     override val value: Int
